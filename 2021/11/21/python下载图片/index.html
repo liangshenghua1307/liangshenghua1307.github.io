@@ -13,20 +13,23 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="记一次简单的python下载图片">
+  <meta name="description" content="一次简单的python下载图片">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <meta name="description" content="记一次简单的python下载图片">
+  <meta name="description" content="一次简单的python下载图片">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python下载图片">
 <meta property="og:url" content="http://example.com/2021/11/21/python%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/index.html">
 <meta property="og:site_name" content="LYB">
-<meta property="og:description" content="记一次简单的python下载图片">
+<meta property="og:description" content="一次简单的python下载图片">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/11/21/python%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/%E5%B0%8F%E8%AE%B0py.png">
 <meta property="article:published_time" content="2021-11-21T07:01:07.815Z">
-<meta property="article:modified_time" content="2021-11-21T07:18:11.032Z">
+<meta property="article:modified_time" content="2021-11-21T08:33:24.399Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2021/11/21/python%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/%E5%B0%8F%E8%AE%B0py.png">
   
   <title>python下载图片 - LYB</title>
 
@@ -195,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      915 字
+      918 字
     </span>
   
 
@@ -239,6 +242,7 @@
               <h6 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下:"></a>代码如下:</h6><hr>
 <figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-keyword">import</span> os<br><br>url = [<span class="hljs-string">&#x27;http://www.daimg.com/photo/list_4_&#123;&#125;.html&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">str</span>(i)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">11</span>)]<br><span class="hljs-comment"># print(url)</span><br>headers = &#123;<br><span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3775.400 QQBrowser/10.6.4208.400&#x27;</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_meimei</span>(<span class="hljs-params">url</span>):</span><br>    web_data = requests.get(url=url, headers=headers)<br>    soup = BeautifulSoup(web_data.text, <span class="hljs-string">&quot;html.parser&quot;</span>)<br>    img_src = soup.find_all(<span class="hljs-string">&#x27;img&#x27;</span>)<br>    luoyubao = []<br>    <span class="hljs-keyword">for</span> luo <span class="hljs-keyword">in</span> img_src:<br>            luoyubao.append(luo.get(<span class="hljs-string">&#x27;src&#x27;</span>))<br>    <span class="hljs-comment"># print(luoyubao)</span><br>    <span class="hljs-comment"># header = luoyubao[1:]</span><br>    <span class="hljs-keyword">for</span> img <span class="hljs-keyword">in</span> luoyubao:<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;D:\\imgdownload\\&quot;</span> + os.path.basename(img), <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>            <span class="hljs-keyword">try</span>:<br>                f.write(requests.get(img).content)<br>            <span class="hljs-keyword">except</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;sb&quot;</span>)<br>        <span class="hljs-built_in">print</span>(os.path.basename(img) + <span class="hljs-string">&quot;保存成功&quot;</span>);<br><span class="hljs-keyword">for</span> titles <span class="hljs-keyword">in</span> url:<br>    get_meimei(titles)<br><br></code></pre></div></td></tr></table></figure>
 
+<h6 id="图片："><a href="#图片：" class="headerlink" title="图片："></a>图片：</h6><p><img src="/2021/11/21/python%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/%E5%B0%8F%E8%AE%B0py.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>
@@ -252,6 +256,13 @@
                     
                   </div>
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+                    
+                  </div>
                 
               </div>
               
