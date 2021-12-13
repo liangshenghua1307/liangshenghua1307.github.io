@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Log4j-2</title>
+    <link href="/2021/12/13/Log4j-2/"/>
+    <url>/2021/12/13/Log4j-2/</url>
+    
+    <content type="html"><![CDATA[<h5 id="本地搭建环境"><a href="#本地搭建环境" class="headerlink" title="本地搭建环境"></a>本地搭建环境</h5><p>jdk1.8.0_92 </p><h5 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h5><p><img src="/2021/12/13/Log4j-2/log4j2%E5%A4%8D%E7%8E%B0.gif"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>安全</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>靶场</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>轮播图</title>
     <link href="/2021/11/22/%E8%BD%AE%E6%92%AD%E5%9B%BE/"/>
     <url>/2021/11/22/%E8%BD%AE%E6%92%AD%E5%9B%BE/</url>
